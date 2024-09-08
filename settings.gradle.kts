@@ -18,8 +18,8 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
-        create("libx") {
-            from(files("libx/libs.versions.toml"))
+        create("libs") {
+            from(files("libx/mobilex.versions.toml"))
         }
     }
 }
