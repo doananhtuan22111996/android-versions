@@ -27,7 +27,7 @@ publishing {
     }
     publications {
         create<MavenPublication>("libsToml") {
-            artifact(file("libs.versions.toml")) {
+            artifact(file("mobilex.versions.toml")) {
                 extension = "toml"
             }
             groupId = "vn.core.libx" // Replace with your GitHub username
