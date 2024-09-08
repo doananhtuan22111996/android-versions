@@ -17,6 +17,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("libx") {
+            from(files("libx/libs.versions.toml"))
+        }
+    }
 }
 
 rootProject.name = "Versions"
