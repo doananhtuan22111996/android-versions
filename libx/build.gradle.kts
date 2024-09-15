@@ -1,10 +1,18 @@
-import java.util.Properties
+import vn.core.buildsrc.Artifact.ARTIFACT_ID
+import vn.core.buildsrc.Artifact.VERSION
+import vn.core.buildsrc.Configs.GITHUB_PACKAGES
+import vn.core.buildsrc.Configs.GROUP_ID
+import vn.core.buildsrc.Configs.VERSION_TOML
+import vn.core.buildsrc.password
+import vn.core.buildsrc.repository
+import vn.core.buildsrc.username
 
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
-    id("maven-publish")
-    id("version-catalog")
+    alias(mobilex.plugins.jetbrainsKotlinJvm)
+    `java-gradle-plugin`
+    `kotlin-dsl`
+    `maven-publish`
+    `version-catalog`
 }
 
 java {
@@ -12,40 +20,84 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+dependencies {
+    implementation(project(":"))
+    implementation(mobilex.kotlinStdlib)
+    implementation(mobilex.androidBuildGradleApi)
+    implementation(mobilex.kotlinGradlePlugin)
+    implementation(mobilex.androidHiltGraldePlugin)
+}
+
+// TODO
+//gradlePlugin {
+//    plugins {
+//        create("androidCorePlugin") {
+//            id = "vn.core.pluginx.android-core"
+//            implementationClass = "vn.core.versions.AndroidCorePlugin"
+//        }
+//        create("androidComposePlugin") {
+//            id = "vn.core.pluginx.android-compose"
+//            implementationClass = "vn.core.versions.AndroidComposePlugin"
+//        }
+//        create("androidHiltPlugin") {
+//            id = "vn.core.pluginx.hilt"
+//            implementationClass = "vn.core.versions.AndroidHiltPlugin"
+//        }
+//        create("androidNavigationPlugin") {
+//            id = "vn.core.pluginx.navigation"
+//            implementationClass = "vn.core.versions.AndroidNavigationPlugin"
+//        }
+//        create("firebasePlugin") {
+//            id = "vn.core.pluginx.firebase"
+//            implementationClass = "vn.core.versions.AndroidFirebasePlugin"
+//        }
+//    }
+//}
+
 publishing {
-    val ghUsername = System.getenv("USERNAME") ?: getLocalProperty("USERNAME")
-    val ghPassword = System.getenv("TOKEN") ?: getLocalProperty("TOKEN")
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${ghUsername}/android-versions")
+            name = GITHUB_PACKAGES
+            url = repository()
             credentials {
-                username = ghUsername
-                password = ghPassword
+                username = username()
+                password = password()
             }
         }
     }
     publications {
-        create<MavenPublication>("libsToml") {
-            artifact(file("mobilex.versions.toml")) {
-                extension = "toml"
-            }
-            groupId = "vn.core.libx" // Replace with your GitHub username
-            artifactId = "versions"
-            version = "1.0.0" // Set your desired version here
+        create<MavenPublication>("catalog") {
+            from(components["versionCatalog"])
+            groupId = GROUP_ID // Replace with your GitHub username
+            artifactId = ARTIFACT_ID
+            version = VERSION // Set your desired version here
+        }
+
+        // TODO
+        // Define a publication for each plugin
+//        create<MavenPublication>("androidPluginsPublication") {
+//            from(components["java"])
+//            groupId = GROUP_ID
+//            artifactId = "plugins"
+//            version = "1.0.0"
+//            pom {
+//                name.set("Android Plugins Group")
+//                description.set("A group of Android-related plugins including core, compose, hilt, navigation, and firebase.")
+//            }
+//        }
+    }
+}
+
+versionCatalogs {
+    catalog {
+        versionCatalog {
+            from(files(VERSION_TOML))
         }
     }
 }
 
-fun getLocalProperty(propertyName: String): String {
-    val localProperties = Properties().apply {
-        val localPropertiesFile = File(rootDir, "local.properties")
-        if (localPropertiesFile.exists()) {
-            load(localPropertiesFile.inputStream())
-        }
-    }
-
-    return localProperties.getProperty(propertyName) ?: run {
-        throw NoSuchFieldException("Not defined property: $propertyName")
+tasks.withType<PublishToMavenRepository>().configureEach {
+    if (name.contains("PluginMarkerMavenPublicationToGitHubPackagesRepository")) {
+        enabled = false
     }
 }
