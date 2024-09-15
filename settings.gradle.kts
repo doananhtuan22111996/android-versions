@@ -18,11 +18,11 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
-        create("libs") {
+        create("mobilex") {
             from(files("libx/mobilex.versions.toml"))
         }
     }
 }
 
-rootProject.name = "Versions"
+rootProject.name = "android-versions"
 include(":libx")
