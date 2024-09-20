@@ -23,7 +23,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Publish Artifact
-        run: ./gradlew publish
+        run: ./gradlew :libx:publish
         continue-on-error: true
 
       - name: Sending report to Telegram

@@ -5,12 +5,12 @@ import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
-import vn.core.libx.libs
+import vn.core.libx.mobilex
 
 class AndroidHiltPlugin : Plugin<Project> {
 
     override fun apply(project: Project) = with(project) {
-        plugins.apply(libs.plugins.androidHilt)
+        plugins.apply(mobilex.plugins.androidHilt)
 
         if (isAndroidApplication) {
             hilt {
@@ -19,12 +19,12 @@ class AndroidHiltPlugin : Plugin<Project> {
         }
         dependencies {
             catalog {
-                implementation(bundle(libs.bundles.hiltComponents))
-                implementation(libs.androidxHilt)
-                kapt(libs.androidxHiltCompiler)
+                implementation(bundle(mobilex.bundles.hiltComponents))
+                implementation(mobilex.androidxHilt)
+                kapt(mobilex.androidxHiltCompiler)
 
-                testImplementation(libs.androidxHiltTesting)
-                androidTestImplementation(libs.androidxHiltTesting)
+                testImplementation(mobilex.androidxHiltTesting)
+                androidTestImplementation(mobilex.androidxHiltTesting)
             }
         }
     }
