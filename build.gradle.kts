@@ -4,9 +4,7 @@ import vn.core.buildsrc.SourceGeneratingTask
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(mobilex.plugins.jetbrainsKotlinJvm) apply false
-    `java-gradle-plugin`
     `kotlin-dsl`
-    `maven-publish`
 }
 
 java {
@@ -21,27 +19,6 @@ kotlin {
         }
     }
 }
-//
-//publishing {
-//    repositories {
-//        maven {
-//            name = GITHUB_PACKAGES
-//            url = repository()
-//            credentials {
-//                username = username()
-//                password = password()
-//            }
-//        }
-//    }
-//    publications {
-//        create<MavenPublication>("gpr") {
-//            from(components["java"])
-//            group = GROUP_ID
-//            artifactId = "pluginx"
-//            version = "1.0.0" // Set your desired version here
-//        }
-//    }
-//}
 
 tasks.register<SourceGeneratingTask>("sourceGeneratingTask") {
     this.outputFile.set(
