@@ -7,7 +7,7 @@ object Configs {
 
     object Versions {
         const val ARTIFACT_ID = "versions"
-        const val VERSION = "1.0.2"
+        const val VERSION = "1.0.3"
     }
 
     object Plugins {
