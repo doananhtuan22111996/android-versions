@@ -47,7 +47,7 @@ material3 = "1.3.0"
 libxDomain = "1.0.0"
 libxData = "1.0.0"
 libxUiBase = "1.0.0"
-libxUiComposex = "1.0.1"
+libxUiComposex = "1.0.2"
 libxUiMdc = "1.0.0"
 libxPlugins = "1.0.0"
 
