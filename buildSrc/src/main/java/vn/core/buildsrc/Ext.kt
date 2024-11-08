@@ -20,5 +20,5 @@ fun Project.getLocalProperty(propertyName: String): String {
 
 fun Project.repository() = uri("https://maven.pkg.github.com/${username()}/android-versions")
 
-fun Project.username() = System.getenv("USERNAME") ?: getLocalProperty("USERNAME")
-fun Project.password() = System.getenv("TOKEN") ?: getLocalProperty("TOKEN")
+fun Project.username() = System.getenv("GH_USERNAME") ?: getLocalProperty("GH_USERNAME")
+fun Project.password() = System.getenv("GH_TOKEN") ?: getLocalProperty("GH_TOKEN")
