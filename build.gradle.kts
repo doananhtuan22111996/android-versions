@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import vn.core.buildsrc.Configs
 import vn.core.buildsrc.SourceGeneratingTask
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -8,8 +9,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = Configs.javaVersion
+    targetCompatibility = Configs.javaVersion
 }
 
 kotlin {
@@ -35,6 +36,6 @@ tasks.create("generateDependenciesConfig") {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+    kotlinOptions.jvmTarget = Configs.javaVersion.toString()
     setDependsOn(listOf(tasks.named("generateDependenciesConfig")))
 }

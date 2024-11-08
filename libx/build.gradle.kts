@@ -12,12 +12,11 @@ plugins {
     `kotlin-dsl`
     `maven-publish`
     `version-catalog`
-    id("com.gradle.plugin-publish") version "1.3.0"
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = Configs.javaVersion
+    targetCompatibility = Configs.javaVersion
 }
 
 dependencies {
