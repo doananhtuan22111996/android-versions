@@ -8,7 +8,6 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 splashscreen = "1.0.1"
 material = "1.12.0"
-jetbrainsKotlinJvm = "1.9.0"
 googleService = "4.4.2"
 firebase = "33.1.1"
 firebaseCrashlytics = "3.0.2"
@@ -26,14 +25,12 @@ navigation = "2.7.7"
 navigationHilt = "1.2.0"
 gson = "2.10.1"
 ksp = "1.9.24-1.0.20"
-buildGradle = "8.4.2"
-kotlinStdlib = "2.0.20"
-kotlinpoet = "1.12.0"
+kotlinpoet = "2.0.0"
 
 # Jetpack compose
-lifecycleRuntimeKtx = "2.8.2"
-activityCompose = "1.9.0"
-composeBom = "2024.06.00"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+composeBom = "2024.10.01"
 uiTextGoogleFonts = "1.6.8"
 viewModelCompose = "2.8.2"
 hilt = "2.51.1"
@@ -52,10 +49,10 @@ libxUiMdc = "1.0.0"
 libxPlugins = "1.0.0"
 
 [libraries]
-androidBuildGrade = { group = "com.android.tools.build", name = "gradle", version.ref = "buildGradle" }
-androidBuildGradleApi = { group = "com.android.tools.build", name = "gradle-api", version.ref = "buildGradle" }
-kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
-kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinStdlib" }
+androidBuildGrade = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+androidBuildGradleApi = { group = "com.android.tools.build", name = "gradle-api", version.ref = "agp" }
+kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidxSecurity = { group = "androidx.security", name = "security-crypto-ktx", version.ref = "securityCrypto" }
 
@@ -141,8 +138,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofitGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 googleGson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 javax = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
-kotliNpoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
-
+kotlinPoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
 
 [bundles]
 coreAndroidComponents = [
@@ -182,7 +178,7 @@ networkingComponents = [
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 androidRoom = { id = "androidx.room", version.ref = "room" }
 androidHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
