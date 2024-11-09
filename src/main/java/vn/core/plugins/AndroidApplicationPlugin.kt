@@ -26,7 +26,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 implementation(bundle(mobilex.bundles.jetpackComposeComponents))
                 implementation(bundle(mobilex.bundles.lifecycleComponents))
                 implementation(bundle(mobilex.bundles.navigationComponents))
-                implementation(mobilex.androidxHilt)
+                implementation(get(mobilex.androidxHilt))
                 kapt(get(mobilex.androidxHiltCompiler))
                 testImplementation(bundle(mobilex.bundles.testComponents))
                 androidTestImplementation(bundle(mobilex.bundles.androidTestComponents))
