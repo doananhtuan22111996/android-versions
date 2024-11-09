@@ -12,7 +12,6 @@ import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.getByType
-import vn.core.buildsrc.Configs.GROUP_ID
 
 abstract class SourceGeneratingTask : DefaultTask() {
 
@@ -22,7 +21,7 @@ abstract class SourceGeneratingTask : DefaultTask() {
     @TaskAction
     fun taskAction() {
         val outputDirs = outputFile.asFile.get()
-        val packageName = GROUP_ID
+        val packageName = Configs.Artifact.GROUP_ID
 
         val dependencyModelName = "DependencyModel"
         val classBuilder = TypeSpec.classBuilder(dependencyModelName)

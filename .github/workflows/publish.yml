@@ -22,8 +22,16 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Publish Artifact
-        run: ./gradlew :libx:publish
+      - name: Publish Version Artifact
+        run: ./gradlew :libx:publishCatalogPublicationToPackageRepository
+        continue-on-error: true
+
+      - name: Publish Plugins Artifact
+        run: |
+          ./gradlew :publishPluginsPublicationToPackageRepository
+          ./gradlew :publishAndroidApplicationPluginMarkerMavenPublicationToPackageRepository
+          ./gradlew :publishAndroidLibraryPluginMarkerMavenPublicationToPackageRepository
+          ./gradlew :publishAndroidPublishingPluginMarkerMavenPublicationToPackageRepository
         continue-on-error: true
 
       - name: Sending report to Telegram
