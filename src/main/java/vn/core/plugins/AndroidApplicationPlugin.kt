@@ -22,7 +22,7 @@ class AndroidApplicationPlugin : Plugin<Project> {
         dependencies {
             catalog {
                 implementation(bundle(mobilex.bundles.coreAndroidComponents))
-                implementation(platform(mobilex.androidxComposeBom))
+                implementation(platform(get(mobilex.androidxComposeBom)))
                 implementation(bundle(mobilex.bundles.jetpackComposeComponents))
                 implementation(bundle(mobilex.bundles.lifecycleComponents))
                 implementation(bundle(mobilex.bundles.navigationComponents))
@@ -43,6 +43,16 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 minSdk = Configs.MIN_SDK
                 targetSdk = Configs.TARGET_SDK
                 testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+                vectorDrawables {
+                    useSupportLibrary = true
+                }
+
+                packaging {
+                    resources {
+                        excludes += "/META-INF/{AL2.0,LGPL2.1}"
+                    }
+                }
             }
 
             compileOptions {
@@ -79,6 +89,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
             }
 
             buildFeatures {
+                dataBinding = true
+                viewBinding = true
                 buildConfig = true
                 compose = true
             }
