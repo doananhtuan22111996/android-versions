@@ -21,12 +21,9 @@ class AndroidPublishingPlugin : Plugin<Project> {
         }
 
         publishing {
-            val ghUsername = System.getenv("GH_USERNAME")
-            val ghPassword = System.getenv("GH_TOKEN")
             repositories {
                 maven {
                     name = "Packages"
-                    url = uri("${Configs.MAVEN_DOMAIN}/${ghUsername}/android-libs")
                     credentials {
                         username = ghUsername
                         password = ghPassword

@@ -2,6 +2,7 @@ package vn.core.plugins
 
 import org.gradle.api.JavaVersion
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.net.URI
 
 object Configs {
     const val MIN_SDK = 26
@@ -16,3 +17,7 @@ object Configs {
         const val RELEASE = "release"
     }
 }
+
+val ghUsername: String = System.getenv("GH_USERNAME")
+val ghPassword: String = System.getenv("GH_TOKEN")
+fun repoUri(repoName: String): URI = URI.create("${Configs.MAVEN_DOMAIN}/${ghUsername}/${repoName}")
