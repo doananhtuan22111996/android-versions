@@ -24,6 +24,7 @@ class AndroidPublishingPlugin : Plugin<Project> {
             repositories {
                 maven {
                     name = "Packages"
+                    url = uri(repoUri)
                     credentials {
                         username = ghUsername
                         password = ghPassword
