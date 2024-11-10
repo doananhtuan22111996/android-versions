@@ -10,6 +10,7 @@ jobs:
     env:
       GH_USERNAME: ${{ secrets.GH_USERNAME }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GH_REPO_NAME: ${{ secrets.GH_REPO_NAME }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
@@ -27,11 +28,19 @@ jobs:
         continue-on-error: true
 
       - name: Publish Plugins Artifact
-        run: |
-          ./gradlew :publishPluginsPublicationToPackageRepository
-          ./gradlew :publishAndroidApplicationPluginMarkerMavenPublicationToPackageRepository
-          ./gradlew :publishAndroidLibraryPluginMarkerMavenPublicationToPackageRepository
-          ./gradlew :publishAndroidPublishingPluginMarkerMavenPublicationToPackageRepository
+        run: ./gradlew :publishPluginsPublicationToPackageRepository
+        continue-on-error: true
+
+      - name: Publish Application Plugin Artifact
+        run: ./gradlew :publishAndroidApplicationPluginMarkerMavenPublicationToPackageRepository
+        continue-on-error: true
+
+      - name: Publish Library Plugin Artifact
+        run: ./gradlew :publishAndroidLibraryPluginMarkerMavenPublicationToPackageRepository
+        continue-on-error: true
+
+      - name: Publish Publishing Plugin Artifact
+        run: ./gradlew :publishAndroidPublishingPluginMarkerMavenPublicationToPackageRepository
         continue-on-error: true
 
       - name: Sending report to Telegram
