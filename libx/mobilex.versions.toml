@@ -10,7 +10,9 @@ splashscreen = "1.0.1"
 material = "1.12.0"
 googleService = "4.4.2"
 firebase = "33.1.1"
-firebaseCrashlytics = "3.0.2"
+firebaseAnalytics = "22.1.2"
+firebaseCrashlytics = "19.2.1"
+firebaseCrashlyticsPlugin = "3.0.2"
 coil = "2.6.0"
 koin = "3.5.6"
 timber = "5.0.1"
@@ -26,11 +28,13 @@ navigationHilt = "1.2.0"
 gson = "2.10.1"
 ksp = "1.9.24-1.0.20"
 kotlinpoet = "2.0.0"
+javapoet = "1.13.0"
 
 # Jetpack compose
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2024.10.01"
+compose = "1.7.5"
 uiTextGoogleFonts = "1.6.8"
 viewModelCompose = "2.8.2"
 hilt = "2.51.1"
@@ -38,15 +42,7 @@ javax = "1"
 mockitoVersion = "5.12.0"
 mockitoKotlinVersion = "5.3.1"
 binaryCompatibilityValidator = "0.13.0"
-material3 = "1.3.0"
-
-# LibX
-libxDomain = "1.0.0"
-libxData = "1.0.0"
-libxUiBase = "1.0.0"
-libxUiComposex = "1.0.2"
-libxUiMdc = "1.0.0"
-libxPlugins = "1.0.0"
+material3 = "1.3.1"
 
 [libraries]
 androidBuildGrade = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -93,26 +89,26 @@ androidxCoroutinesTest = { group = "org.jetbrains.kotlinx", name = "kotlinx-coro
 # Jetpack compose
 androidxActivityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidxComposeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidxComposeUi = { group = "androidx.compose.ui", name = "ui" }
-androidxComposeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidxComposeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidxComposeUiTestJunit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
-androidxComposeMaterial3Icons = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidxComposeUi = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+androidxComposeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "compose" }
+androidxComposeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
+androidxComposeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+androidxComposeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
+androidxComposeUiTestJunit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
+androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+androidxComposeMaterial3Icons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose" }
 androidxComposeMaterial3Android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3" }
 androidxComposeUiTextGoogleFonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 androidxNavigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 androidxNavigationHiltCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "navigationHilt" }
-androidxComposeWindowSize = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+androidxComposeWindowSize = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "material3" }
 androidxViewmodelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewModelCompose" }
 androidxPagingCompose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 
 # Firebase
 firebaseBom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase" }
-firebaseAnalytics = { group = "com.google.firebase", name = "firebase-analytics" }
-firebaseCrashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebaseAnalytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+firebaseCrashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -120,14 +116,6 @@ mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito
 mockitoKotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlinVersion" }
 androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidxEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-
-# Core libx
-coreLibxDomain = { group = "vn.core.libx", name = "domain", version.ref = "libxDomain" }
-coreLibxData = { group = "vn.core.libx", name = "data", version.ref = "libxData" }
-coreLibxUiBase = { group = "vn.core.libx-ui", name = "base", version.ref = "libxUiBase" }
-coreLibxUiComposex = { group = "vn.core.libx-ui", name = "composex", version.ref = "libxUiComposex" }
-coreLibxUiMdc = { group = "vn.core.libx-ui", name = "mdc", version.ref = "libxUiMdc" }
-coreLibxPlugins = { group = "vn.core.libx", name = "plugins", version.ref = "libxPlugins" }
 
 # Others
 loadImages = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
@@ -139,6 +127,7 @@ retrofitGson = { group = "com.squareup.retrofit2", name = "converter-gson", vers
 googleGson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 javax = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
 kotlinPoet = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
+javaPoet = { group = "com.squareup", name = "javapoet", version.ref = "javapoet" }
 
 [bundles]
 coreAndroidComponents = [
@@ -158,7 +147,7 @@ jetpackComposeComponents = [
     "androidxActivityCompose", "androidxComposeBom", "androidxNavigationCompose", "androidxNavigationHiltCompose",
     "androidxPagingCompose", "androidxViewmodelCompose", "androidxComposeUi", "androidxComposeUiGraphics",
     "androidxComposeUiTooling", "androidxComposeUiToolingPreview", "androidxComposeMaterial3",
-    "androidxComposeMaterial3Icons", "androidxComposeWindowSize", "androidxComposeUiTextGoogleFonts"
+    "androidxComposeMaterial3Icons", "androidxComposeWindowSize", "androidxComposeUiTextGoogleFonts", "androidxComposeMaterial3Android"
 ]
 testComponents = [
     "androidxJunit", "junit", "mockito", "mockitoKotlin", "androidxCoroutinesTest",
@@ -184,6 +173,6 @@ androidRoom = { id = "androidx.room", version.ref = "room" }
 androidHilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 googleService = { id = "com.google.gms.google-services", version.ref = "googleService" }
-firebaseCrashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }
+firebaseCrashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

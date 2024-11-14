@@ -45,6 +45,12 @@ gradlePlugin {
             description = "Plugin for android library module"
             implementationClass = "vn.core.plugins.AndroidLibraryPlugin"
         }
+        create("androidCompose") {
+            id = "vn.core.plugins.androidCompose"
+            displayName = "Android Compose"
+            description = "Plugin for android compose module"
+            implementationClass = "vn.core.plugins.AndroidComposePlugin"
+        }
         create("androidPublishing") {
             id = "vn.core.plugins.androidPublishing"
             displayName = "Android Publishing"
@@ -55,10 +61,11 @@ gradlePlugin {
 }
 
 dependencies {
-    api(mobilex.androidBuildGrade)
-    api(mobilex.androidBuildGradleApi)
-    api(mobilex.kotlinStdlib)
-    api(mobilex.kotlinGradlePlugin)
+    implementation(mobilex.androidBuildGrade)
+    implementation(mobilex.androidBuildGradleApi)
+    implementation(mobilex.kotlinStdlib)
+    implementation(mobilex.kotlinGradlePlugin)
+    implementation(mobilex.javaPoet)
 }
 
 publishing {
