@@ -76,9 +76,11 @@ class AndroidApplicationPlugin : Plugin<Project> {
 
             buildTypes {
                 getByName(Configs.Mode.DEBUG) {
+                    isDebuggable = true
                     isMinifyEnabled = false
                 }
                 getByName(Configs.Mode.RELEASE) {
+                    isDebuggable = false
                     isMinifyEnabled = true
                     isShrinkResources = true
                     proguardFiles(

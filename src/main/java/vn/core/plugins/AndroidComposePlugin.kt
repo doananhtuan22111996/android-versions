@@ -8,34 +8,21 @@ import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import vn.core.libs.mobilex
 
-class AndroidLibraryPlugin : Plugin<Project> {
+class AndroidComposePlugin : Plugin<Project> {
 
     override fun apply(project: Project) = with(project) {
 
         plugins.run {
-            apply(mobilex.plugins.androidLibrary)
-            apply(mobilex.plugins.kotlinAndroid)
-            apply(mobilex.plugins.androidHilt)
-            apply("kotlin-kapt")
+            apply(mobilex.plugins.composeCompiler)
         }
 
         androidConfig()
 
         dependencies {
             catalog {
-                implementation(bundle(mobilex.bundles.coreAndroidComponents))
-                implementation(bundle(mobilex.bundles.pagingComponents))
-                implementation(get(mobilex.androidxRoomRuntime))
-                kapt(get(mobilex.androidxRoomCompiler))
-                implementation(get(mobilex.androidxSecurity))
-                implementation(get(mobilex.androidxHilt))
-                kapt(get(mobilex.androidxHiltCompiler))
-                implementation(get(mobilex.retrofit))
-                implementation(get(mobilex.retrofitGson))
-                implementation(get(mobilex.loggerTimber))
-                implementation(get(mobilex.loggerOkhttp))
-                testImplementation(bundle(mobilex.bundles.testComponents))
-                androidTestImplementation(bundle(mobilex.bundles.androidTestComponents))
+                implementation(platform(get(mobilex.androidxComposeBom)))
+                implementation(bundle(mobilex.bundles.jetpackComposeComponents))
+                androidTestImplementation(bundle(mobilex.bundles.composeTestComponents))
             }
         }
     }
@@ -60,9 +47,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
             }
 
             buildFeatures {
-                dataBinding = true
-                viewBinding = true
-                buildConfig = true
+                compose = true
             }
         }
     }
