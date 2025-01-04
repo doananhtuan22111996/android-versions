@@ -29,17 +29,17 @@ abstract class SourceGeneratingTask : DefaultTask() {
                 FunSpec.constructorBuilder()
                     .addParameter("libraryAlias", String::class)
                     .addParameter("groupArtifact", String::class)
-                    .build()
+                    .build(),
             )
             .addProperty(
                 PropertySpec.builder("libraryAlias", String::class)
                     .initializer("libraryAlias")
-                    .build()
+                    .build(),
             )
             .addProperty(
                 PropertySpec.builder("groupArtifact", String::class)
                     .initializer("groupArtifact")
-                    .build()
+                    .build(),
             )
         FileSpec.builder(packageName, dependencyModelName)
             .addType(classBuilder.build())
@@ -59,7 +59,7 @@ abstract class SourceGeneratingTask : DefaultTask() {
                     builder.addProperty(
                         PropertySpec.builder(alias, className)
                             .initializer("%T(%S,%S)", className, alias, groupArtifact)
-                            .build()
+                            .build(),
                     )
                 }
             }
@@ -69,7 +69,7 @@ abstract class SourceGeneratingTask : DefaultTask() {
                 versionAliasBuilder.addProperty(
                     PropertySpec.builder(alias, String::class)
                         .initializer("%S", alias)
-                        .build()
+                        .build(),
                 )
             }
             builder.addType(versionAliasBuilder.build())
@@ -80,7 +80,7 @@ abstract class SourceGeneratingTask : DefaultTask() {
                 pluginAliasBuilder.addProperty(
                     PropertySpec.builder(alias, String::class)
                         .initializer("%S", plugin.pluginId)
-                        .build()
+                        .build(),
                 )
             }
             builder.addType(pluginAliasBuilder.build())
@@ -91,7 +91,7 @@ abstract class SourceGeneratingTask : DefaultTask() {
                 bundleAliasesBuilder.addProperty(
                     PropertySpec.builder(alias, ClassName(packageName, bundleAliasType.name))
                         .initializer("%S", alias)
-                        .build()
+                        .build(),
                 )
             }
             builder.addType(bundleAliasesBuilder.build())

@@ -11,7 +11,6 @@ import vn.core.libs.mobilex
 class AndroidLibraryPlugin : Plugin<Project> {
 
     override fun apply(project: Project) = with(project) {
-
         plugins.run {
             apply(mobilex.plugins.androidLibrary)
             apply(mobilex.plugins.kotlinAndroid)
@@ -34,6 +33,8 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 implementation(get(mobilex.retrofitGson))
                 implementation(get(mobilex.loggerTimber))
                 implementation(get(mobilex.loggerOkhttp))
+                implementation(get(mobilex.coilNetwork))
+                implementation(get(mobilex.coilCompose))
                 testImplementation(bundle(mobilex.bundles.testComponents))
                 androidTestImplementation(bundle(mobilex.bundles.androidTestComponents))
             }
@@ -75,6 +76,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
 
     private fun LibraryExtension.kotlinOptions(configure: Action<KotlinJvmOptions>): Unit =
         (this as org.gradle.api.plugins.ExtensionAware).extensions.configure(
-            "kotlinOptions", configure
+            "kotlinOptions",
+            configure,
         )
 }

@@ -11,7 +11,6 @@ import vn.core.libs.mobilex
 class AndroidComposePlugin : Plugin<Project> {
 
     override fun apply(project: Project) = with(project) {
-
         plugins.run {
             apply(mobilex.plugins.composeCompiler)
         }
@@ -60,6 +59,7 @@ class AndroidComposePlugin : Plugin<Project> {
 
     private fun LibraryExtension.kotlinOptions(configure: Action<KotlinJvmOptions>): Unit =
         (this as org.gradle.api.plugins.ExtensionAware).extensions.configure(
-            "kotlinOptions", configure
+            "kotlinOptions",
+            configure,
         )
 }

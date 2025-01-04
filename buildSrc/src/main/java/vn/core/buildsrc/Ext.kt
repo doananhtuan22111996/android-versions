@@ -6,7 +6,6 @@ import java.util.Properties
 
 fun Project.getLocalProperty(propertyName: String): String {
     val localProperties = Properties().apply {
-
         val localPropertiesFile = File(rootDir, "local.properties")
         if (localPropertiesFile.exists()) {
             load(localPropertiesFile.inputStream())
