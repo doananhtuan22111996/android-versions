@@ -28,6 +28,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 implementation(bundle(mobilex.bundles.navigationComponents))
                 implementation(get(mobilex.androidxHilt))
                 kapt(get(mobilex.androidxHiltCompiler))
+                implementation(get(mobilex.coilNetwork))
+                implementation(get(mobilex.coilCompose))
                 testImplementation(bundle(mobilex.bundles.testComponents))
                 androidTestImplementation(bundle(mobilex.bundles.androidTestComponents))
                 androidTestImplementation(bundle(mobilex.bundles.composeTestComponents))
@@ -84,7 +86,8 @@ class AndroidApplicationPlugin : Plugin<Project> {
                     isMinifyEnabled = true
                     isShrinkResources = true
                     proguardFiles(
-                        getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+                        getDefaultProguardFile("proguard-android.txt"),
+                        "proguard-rules.pro",
                     )
                     signingConfig = signingConfigs.getByName(Configs.Mode.RELEASE)
                 }

@@ -29,6 +29,8 @@ gson = "2.10.1"
 ksp = "1.9.24-1.0.20"
 kotlinpoet = "2.0.0"
 javapoet = "1.13.0"
+spotless = "6.25.0"
+coilCompose = "3.0.4"
 
 # Jetpack compose
 lifecycleRuntimeKtx = "2.8.7"
@@ -117,6 +119,10 @@ mockitoKotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version
 androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidxEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
+# Coil compose
+coilCompose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coilCompose" }
+coilNetwork = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coilCompose" }
+
 # Others
 loadImages = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
@@ -176,3 +182,4 @@ googleService = { id = "com.google.gms.google-services", version.ref = "googleSe
 firebaseCrashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

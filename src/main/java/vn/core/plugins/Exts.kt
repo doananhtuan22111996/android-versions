@@ -23,19 +23,16 @@ import java.util.Properties
 /**
  * Configures the [android][com.android.build.gradle.LibraryExtension] extension.
  */
-internal
-fun Project.android(configure: Action<BaseAppModuleExtension>): Unit =
+internal fun Project.android(configure: Action<BaseAppModuleExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("android", configure)
 
-internal
-fun BaseAppModuleExtension.kotlinOptions(configure: Action<KotlinJvmOptions>): Unit =
+internal fun BaseAppModuleExtension.kotlinOptions(configure: Action<KotlinJvmOptions>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kotlinOptions", configure)
 
 /**
  * Configures the [kapt][org.jetbrains.kotlin.gradle.plugin.KaptExtension] extension.
  */
-internal
-fun Project.kapt(configure: Action<KaptExtension>): Unit =
+internal fun Project.kapt(configure: Action<KaptExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("kapt", configure)
 
 /**
@@ -111,23 +108,23 @@ fun Sequence<VersionCatalog>.bundle(bundleAlias: BundleAlias): Provider<External
         .get()
 
 fun getSecretPropertyFile(rootProject: Project): Properties {
-    val SIGNING_KEY_ALIAS = "SIGNING_KEY_ALIAS"
-    val SIGNING_KEYSTORE_PASSWORD = "SIGNING_KEYSTORE_PASSWORD"
-    val SIGNING_KEY_PASSWORD = "SIGNING_KEY_PASSWORD"
+    val signingKeyAlias = "SIGNING_KEY_ALIAS"
+    val signingKeystorePassword = "SIGNING_KEYSTORE_PASSWORD"
+    val signingKeyPassword = "SIGNING_KEY_PASSWORD"
 
     val secretPropertiesFile: File = rootProject.file("secret.properties")
     val secretProperties = Properties()
     if (secretPropertiesFile.exists()) {
         secretProperties.load(FileInputStream(secretPropertiesFile))
     }
-    System.getenv(SIGNING_KEY_ALIAS)?.let {
-        secretProperties.setProperty("SIGNING_KEY_ALIAS", it)
+    System.getenv(signingKeyAlias)?.let {
+        secretProperties.setProperty(signingKeyAlias, it)
     }
-    System.getenv(SIGNING_KEYSTORE_PASSWORD)?.let {
-        secretProperties.setProperty("SIGNING_KEYSTORE_PASSWORD", it)
+    System.getenv(signingKeystorePassword)?.let {
+        secretProperties.setProperty(signingKeystorePassword, it)
     }
-    System.getenv(SIGNING_KEY_PASSWORD)?.let {
-        secretProperties.setProperty("SIGNING_KEY_PASSWORD", it)
+    System.getenv(signingKeyPassword)?.let {
+        secretProperties.setProperty(signingKeyPassword, it)
     }
     return secretProperties
 }

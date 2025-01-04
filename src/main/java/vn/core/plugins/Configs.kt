@@ -20,4 +20,4 @@ object Configs {
 val ghUsername: String = System.getenv("GH_USERNAME")
 val ghPassword: String = System.getenv("GH_TOKEN")
 val ghRepoName: String = System.getenv("GH_REPO_NAME")
-val repoUri: String = "${Configs.MAVEN_DOMAIN}/${ghUsername}/${ghRepoName}"
+val repoUri: String = "${Configs.MAVEN_DOMAIN}/$ghUsername/$ghRepoName"
